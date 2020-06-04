@@ -1,0 +1,17 @@
+name: Deploy Website
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Axiom Website
+    steps:
+      - uses: actions/checkout@v2
+        name: Install Node.js
+        with:
+          node version: 12
+          name: install surge
+          run: npm install -g surge
+          -name: run surge
+           
+        env: surge./build http://bootcamp_prroject02.surge.sh/--token${{ secrets.SURGE_TOKEN}}
